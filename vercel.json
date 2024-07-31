@@ -1,11 +1,27 @@
 {
   "version": 2,
+  "name": "Mail-Test",
   "builds": [
-    { "src": "server/index.js", "use": "@vercel/node" },
-    { "src": "client/package.json", "use": "@vercel/static-build" }
+    {
+      "src": "server/index.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "client/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "client/build"
+      }
+    }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "/server/index.js" },
-    { "src": "/(.*)", "dest": "/client/build/$1" }
+    {
+      "src": "/api/(.*)",
+      "dest": "/server/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/client/build/index.html"
+    }
   ]
 }
