@@ -1,11 +1,18 @@
 const express = require("express");
 const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
-const cors = require("cors"); // Import cors
+const cors = require("cors");
 const app = express();
 const port = 3001;
 
-app.use(cors()); // Use cors middleware
+// Allow requests from your client's origin
+const corsOptions = {
+  origin: "https://mail-test-d8ed.vercel.app", // replace with your client's URL
+  methods: "POST,OPTIONS",
+  allowedHeaders: "Content-Type",
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 app.post("/api/send-email", async (req, res) => {
