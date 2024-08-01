@@ -18,8 +18,11 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const serverUrl =
+      process.env.REACT_APP_SERVER_URL || "http://localhost:3001";
+
     // Send form data to backend
-    const response = await fetch("http://localhost:3001/api/send-email", {
+    const response = await fetch(`${serverUrl}/api/send-email`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
