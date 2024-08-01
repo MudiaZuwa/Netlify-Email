@@ -17,7 +17,7 @@ const ContactForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    const port = process.env.PORT || 3001;
     const serverUrl =
       process.env.REACT_APP_SERVER_URL || "http://localhost:3001";
 
@@ -29,7 +29,7 @@ const ContactForm = () => {
       },
       body: JSON.stringify(formData),
     });
-    
+
     if (response.ok) {
       alert("Email sent successfully");
     } else {
