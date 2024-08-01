@@ -3,11 +3,11 @@ const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 // Allow requests from your client's origin
 const corsOptions = {
-  origin: "https://mail-test-d8ed.vercel.app", // replace with your client's URL
+  origin: "https://mail-test-d8ed-klmatlqkp-mudiazuwas-projects.vercel.app", // replace with your client's URL
   methods: "POST,OPTIONS",
   allowedHeaders: "Content-Type",
 };
@@ -22,15 +22,15 @@ app.post("/api/send-email", async (req, res) => {
   let transporter = nodemailer.createTransport({
     service: "gmail", // you can use any email service
     auth: {
-      user: "mudiaosazuwa@gmail.com", // your email
-      pass: "mgnd wumj xskx rzpz", // your email password
+      user: process.env.EMAIL_USER, // your email
+      pass: process.env.EMAIL_PASS, // your email password
     },
   });
 
   // Set up email data
   let mailOptions = {
     from: email,
-    to: "mudiaosazuwa@gmail.com", // admin email
+    to: process.env.ADMIN_EMAIL, // admin email
     subject: "New Contact Form Submission",
     text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
   };

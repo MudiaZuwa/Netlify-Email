@@ -29,7 +29,7 @@ const ContactForm = () => {
       },
       body: JSON.stringify(formData),
     });
-
+    
     if (response.ok) {
       alert("Email sent successfully");
     } else {
