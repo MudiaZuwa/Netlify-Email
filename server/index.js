@@ -7,7 +7,7 @@ const port = process.env.PORT || 3001;
 
 // Allow requests from your client's origin
 const corsOptions = {
-  origin: "https://mail-test-d8ed-klmatlqkp-mudiazuwas-projects.vercel.app", // replace with your client's URL
+  origin: "https://mail-test-d8ed-klmatlqkp-mudiazuwas-projects.vercel.app",
   methods: "POST,OPTIONS",
   allowedHeaders: "Content-Type",
 };
@@ -18,25 +18,22 @@ app.use(bodyParser.json());
 app.post("/api/send-email", async (req, res) => {
   const { name, email, message } = req.body;
 
-  // Create a transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    service: "gmail", // you can use any email service
+    service: "gmail",
     auth: {
-      user: process.env.EMAIL_USER, // your email
-      pass: process.env.EMAIL_PASS, // your email password
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
     },
   });
 
-  // Set up email data
   let mailOptions = {
     from: email,
-    to: process.env.ADMIN_EMAIL, // admin email
+    to: process.env.ADMIN_EMAIL,
     subject: "New Contact Form Submission",
     text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
   };
 
   try {
-    // Send email
     await transporter.sendMail(mailOptions);
     res.status(200).send("Email sent successfully");
   } catch (error) {
