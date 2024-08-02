@@ -17,11 +17,9 @@ const ContactForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const port = process.env.PORT || 3001;
     const serverUrl =
-      process.env.REACT_APP_SERVER_URL || "http://localhost:3001";
+      process.env.REACT_APP_SERVER_URL || "/.netlify/functions/sendEmail";
 
-    // Send form data to backend
     const response = await fetch(`${serverUrl}/api/send-email`, {
       method: "POST",
       headers: {
