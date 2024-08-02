@@ -1,6 +1,6 @@
 [build]
   base = "client"
-  publish = "client/build"
+  publish = "build"
   command = "npm run build"
 
 [[redirects]]
@@ -9,4 +9,4 @@
   status = 200
 
 [functions]
-  directory = "server/netlify/functions"
+  directory = "../server/netlify/functions"
