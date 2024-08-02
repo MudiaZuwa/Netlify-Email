@@ -17,8 +17,7 @@ const ContactForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const serverUrl =
-      process.env.REACT_APP_SERVER_URL || "/.netlify/functions/sendEmail";
+    const serverUrl = "/.netlify/functions/sendEmail";
 
     const response = await fetch(`${serverUrl}/api/send-email`, {
       method: "POST",

@@ -5,11 +5,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 
-app.use(
-  cors({
-    origin: process.env.REACT_APP_CLIENT_URL,
-  })
-);
+app.use(cors({}));
 app.use(bodyParser.json());
 
 app.post("/api/send-email", async (req, res) => {
