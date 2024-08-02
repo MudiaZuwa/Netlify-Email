@@ -6,6 +6,7 @@
     "start": "npm --prefix client start",
     "build": "npm --prefix client run build",
     "serve": "npm --prefix server start",
+    "postinstall": "npm install --prefix server",
     "netlify": "npm run build"
   },
   "workspaces": [
